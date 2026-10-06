@@ -77,5 +77,37 @@ o `down -v`, porque apaga os volumes
 10. Código de conclusão impresso pelo verificador:
 
 ```
-(cole aqui)
+PS C:\Users\Aluno\Downloads\avaliacao-docker-26128316> powershell -ExecutionPolicy Bypass -File scripts\verificar.ps1                                                                                    
+================================================================                                                                                                                                         
+ Verificador · Avaliação Prática de Docker · Turma A                                                                                                                                                     
+================================================================                                                                                                                                         
+ Matrícula 26128316 · portal 8016 · blog 9016 · manutenção 7016                                                                                                                                          
+                                                                                                                                                                                                         
+A. Arquivos, imagens e Git                                                                                                                                                                               
+[ OK ] A1 portal/Dockerfile segue os requisitos
+[ OK ] A2 imagem manutencao:26128316 corrigida e servindo o aviso
+[ OK ] A3 .env fora do Git e .env.example versionado
+[ OK ] A4 5+ commits e remoto no GitHub (encontrados: 5)
+[ OK ] A5 imagem joaodemutti/agrovale-portal:1.0-26128316 pública no Docker Hub
+
+B. Stack em execução
+[ OK ] B1 serviços portal, blog e db em execução
+[ OK ] B2 portal roda a imagem publicada
+[ OK ] B3 portas: portal em 8016 e blog em 9016                                                                                                                                                          
+[ OK ] B4 db sem porta publicada e com volume nomeado                                                                                                                                                    
+[ OK ] B5 blog com volume nomeado em /var/www/html                                                                                                                                                       
+[ OK ] B6 rede própria compartilhada pelos três serviços                                                                                                                                                 
+[ OK ] B7 política de restart nos três serviços                                                                                                                                                          
+[ OK ] B8 nenhuma senha escrita direto no docker-compose.yml                                                                                                                                             
+
+C. Conteúdo e persistência
+[ OK ] C1 portal mostra seu nome e sua matrícula
+[ OK ] C2 WordPress instalado com a matrícula no título do site
+[ OK ] C3 post sobreviveu à recriação do blog (post 2026-10-06T01:38:01 · container 2026-10-06T01:41:49)
+
+================================================================
+ Resultado: 16/16 verificações
+ Código de conclusão: AGROVALE-26128316-C9DDD0C1
+ Copie o código para o respostas.md, faça o commit final e crie a tag v1.0.
+================================================================
 ```
