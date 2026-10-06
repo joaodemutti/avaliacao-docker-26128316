@@ -12,14 +12,31 @@ do que texto longo copiado. Resposta que contradiz o seu próprio Dockerfile ou 
 
 1. Qual imagem base você usou e qual o tamanho final da imagem do portal (saída de `docker images`)?
 
+R: Usei o `nginx:alpine` e o tamanho final foi: 93.57 MB.
+
 2. Em qual pasta do container o Nginx procura os arquivos do site? Mostre o comando que você usou para
    conferir que o `index.html` está lá dentro.
+
+
+R:
+
+`/usr/share/nginx/html`
+
+`docker exec -it portal sh`
+
+`ls`
+   
 
 ## Parte 2 · Docker Hub
 
 3. Nome completo da imagem publicada e link público do repositório no Docker Hub.
 
+joaodemutti/agrovale-portal:1.0-26128316
+https://hub.docker.com/repository/docker/joaodemutti/agrovale-portal
+
 4. Por que o `docker login` foi feito com um token de acesso e não com a senha da conta?
+
+R: Porque é mais seguro.
 
 ## Parte 3 · Página de manutenção
 
