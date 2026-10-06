@@ -56,13 +56,23 @@ R: `-p 7042:80` expõe a porta externa 7042 apontando para a porta do container 
 
 7. No serviço `blog`, por que `WORDPRESS_DB_HOST` recebe `db` e não `localhost`?
 
+R: Porque o localhost é do endereço interno do container e não da rede do docker, já o db é o serviço do docker q serve como o endereço host entre os containers/serviços do compose.
+
 8. Por que o serviço `db` não publica a porta 3306? Se precisar consultar o banco, como faz sem publicar
    a porta? Mostre o comando.
+
+Por causa de segurança, publicando a porta 3306 está expondo o banco para qualquer um acessar, dá para acessar pelo docker exec ou criar um serviço de acesso admin como o adminer. `docker exec -it db mariadb -u agrovale -p123456`
 
 ## Parte 5 · Persistência
 
 9. Quais comandos você usou para derrubar e subir a stack? Qual comando teria apagado o post que você criou,
    e por quê?
+
+`docker compose up -d`
+
+`docker compose down -v`
+
+o `down -v`, porque apaga os volumes
 
 10. Código de conclusão impresso pelo verificador:
 

@@ -1,0 +1,47 @@
+services:
+  portal:
+    container_name: portal
+    image: joaodemutti/agrovale-portal:1.0-26128316
+    ports:
+      - "8016:80"
+    restart: unless-stopped
+    networks:
+      - avaliacao
+  blog:
+    container_name: blog
+    image: wordpress:6-apache
+    restart: unless-stopped
+    depends_on: 
+      - db
+    ports:
+      - "9016:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${MARIADB_DATABASE}
+      WORDPRESS_DB_USER: ${MARIADB_USER}
+      WORDPRESS_DB_PASSWORD: ${MARIADB_PASSWORD}
+    volumes:
+      - "wordpress_data:/var/www/html"
+    networks:
+      - avaliacao
+  db:
+    container_name: db
+    image: mariadb:11.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MARIADB_DATABASE}
+      MYSQL_USER: ${MARIADB_USER}
+      MYSQL_PASSWORD: ${MARIADB_PASSWORD}
+    volumes: 
+      - "mariadb_data:/var/lib/mysql"
+    restart: unless-stopped
+    networks:
+      - avaliacao
+
+volumes:
+  mariadb_data:
+  wordpress_data:
+
+networks:
+  avaliacao:
+    driver: bridge
