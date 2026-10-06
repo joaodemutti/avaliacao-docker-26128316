@@ -44,11 +44,13 @@ R: Porque é mais seguro.
 
 | # | Instrução | O que estava errado | O que você viu acontecer | Como corrigiu |
 |---|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
+| 1 | curl "http://localhost:7016" | Não foi feito o `COPY` do `index.html` para imagem do container | Não apareceu a página correta | Inserido a linha `COPY ./html ./`, alterado o WORKDIR e pasta local |
+| 2 | docker exec manut ls | Os arquivos padrão do nginx não forma removidos | Listagem dos arquivos no diretório html | `RUN rm -rf ./*` |
+| 3 | Abrir Dockerfile | Não estava documentado a porta do container | Ausência da porta exposta com o comando `EXPOSE` no Dockerfile | `EXPOSE 80` |
 
 6. Qual a diferença entre `-p 7042:80` e `-p 80:7042` no `docker run`? Qual dos dois números é a porta do container?
+
+R: `-p 7042:80` expõe a porta externa 7042 apontando para a porta do container 80, o oposto é feito no `-p 80:7042`. O da direita é do container.
 
 ## Parte 4 · docker-compose.yml
 

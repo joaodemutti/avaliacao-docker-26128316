@@ -3,7 +3,7 @@ WORKDIR /usr/share/nginx/html
 
 RUN rm -rf ./*
 
-COPY ./html/* ./
+COPY ./html ./
 
 EXPOSE 80
 
